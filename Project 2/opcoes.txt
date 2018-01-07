@@ -1,0 +1,53 @@
+Em primeiro lugar optou-se por criar um script que efectua o preprocessamento dos Corpora dados (o script preprocess.sh). Utilizando comandos como sed, awk, grep, este script faz o processamento dos coprora anotados:
+
+	1) Remove frases com erro;
+	2) Remove frases onde a palavra ambígua não é verbo;
+	3) Substitui frases dos corpora que tenham mais que uma ocorrência das palavras ambíguas
+	4) Substitui-se cada ocorrência da palavra ambígua nas frases pelo seu lema anotado
+
+No final deste procedimento, obtêm-se os seguintes ficheiros que contêm os corpora preprocessados:
+
+	1) foraIrSer-1.final
+	2) vimosVerVir.final
+
+O passo seguinte é calcular unigramas e bigramas, para isso utiliza-se o script ngrams.sh. Este procedimento pode ser descrito em 4 passos:
+
+	1) Preprocessamento dos corpora para bigramas, onde se passa todas as letras para minuscúlas.
+	2) Para contarmos os bigramas que incluem início '^' e fim de frase '$', inserem-se os caracteres '^' e '$' no início e no fim de cada frase. Deste modo, estes serão contabilizados nos bigramas.
+	3) Cálculo das frequências dos Unigramas utilizando o comando 'uniq -c'
+	4) Cálculo das frequências dos bigramas não alisados usando um 'awk' que precorre o corpus e conta.
+	5) Por simplicidade, é utilizado alisamento add one onde se soma 1 à frequência de cada bigrama e se acrescentam 4 bigramas que modelam o desconhecido:
+
+		5.1) Para o corpus ver/vir: (Unknown ver), (ver Unknown), (Unknown vir) e (vir Unknown) cada um com contagem 1
+		5.2) Para o corpus ir/ser: (Unknown ir), (ir Unknown), (Unknown ser) e (ser Unknown) cada um com contagem 1
+
+		Nota: Basta acrescentar os bigramas mencionados, pois, para comparar as probabilidades de ambos os lemas numa frase, só necessitamos dos bigramas envolventes e, como tal, calcular todas as combinações possíveis de bigramas seria desnecessário.
+
+No final deste procedimento, obtêm-se os seguintes ficheiros com os n-gramas necessários:
+
+	1) palavra1Unigramas.txt
+	2) palavra1Bigramas.txt
+	3) palavra2Unigramas.txt contendo os bigramas alisados.
+	4) palavra2Biigramas.txt contendo os bigramas alisados.
+
+Por último apresenta-se o programa 'chooseLemma.py' que:
+
+	1) Utiliza o ficheiro de parameterização para saber que n-gramas carregar
+	2) Preprocessa as frases da mesma forma que o script ngrams.sh
+	2) Para cada frase, procura as palavras que envolvem a palavra ambígua (e.g. o vimos la) e calcula as probabilidades da seguintes forma:
+
+		Sendo V, o número de palavras diferentes no corpus.
+
+		2.1) Lema 1: P(frase com o lema1) = P(lema1|Palavra Precedente)P(Palavra Posterior|Lema 1), onde:
+
+			2.1.1) P(lema1|Palavra Precedente) = count(Palavra Precedente lema1)/(count(Palavra Precedente) + V)
+			2.1.2) P(Palavra Posterior|lema1) = count(lema1 Palavra Posterior)/(count(lema1) + V)
+
+		2.2) Lema 2: P(frase com o lema2) = P(lema2|Palavra Precedente)P(Palavra Posterior|Lema 2), onde:
+
+			2.2.1) P(lema2|Palavra Precedente) = count(Palavra Precedente lema2)/(count(Palavra Precedente) + V)
+			2.2.2) P(Palavra Posterior|lema2) = count(lema2 Palavra Posterior)/(count(lema2) + V)
+
+		2.3) Escolhe o lema mais provável.
+
+	Nota: A contagem do unigrama UNKNOWN é de 1.

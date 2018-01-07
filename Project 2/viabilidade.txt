@@ -1,0 +1,9 @@
+Tendo em conta os Corpora apresentados, os resultados vão estar sempre altamente influenciados por:
+
+	1) Em cada corpus há um lema que predomina o outro. Isto é, por exemplo, no corpus ver/vir aparecem muito mais frases com 'vimos' do verbo ver. Assim, a probabilidade a priori do lema 'ver' terá um grande impacto na probabilidade final da frase, o que pode conduzir a resultados enganadores.
+
+	2) Com um corpus tão pequeno muitos bigramas têm um baixo número de ocorrências, deste modo, a significância das probabilidades calculadas é relativamente baixa, o que pode, novamente, conduzir a resultados enganadores.
+
+	3) Novamente, por se usarem Corpora de tamanho reduzido, é possível e provável que num conjunto de frases de teste apareçam muitas palavras que não constavam do Corpus de treino. Para além do seu reduzido tamanho, os corpora falam quase apenas de um assunto. Por exemplo, o corpus ir/ser fala quase exclusivamente de futebol. Assim, a decisão tomada será mais aleatória.
+
+	4) Pela mesma razão, o uso de alisamento é chave e, como tal, se fosse na realidade, teria sido utilizada uma técnica de alisamento bem mais sofisticada como Good-Turing ou Interpolação.

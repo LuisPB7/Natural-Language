@@ -1,0 +1,25 @@
+SENTENCE: Ele fora a Lisboa no dia anterior .
+Lema ser with probability 1.2071624396580454e-05
+Lema ir with probability 3.344242251557915e-07
+Most likely lemma: ser
+
+SENTENCE: Ele fora observado pelo jogador .
+Lema ser with probability 8.622588854700323e-07
+Lema ir with probability 1.6721211257789576e-07
+Most likely lemma: ser
+
+SENTENCE: O João fora a casa do Luís jogar playstation .
+Lema ser with probability 6.055675010954284e-06
+Lema ir with probability 3.355247573652717e-07
+Most likely lemma: ser
+
+SENTENCE: João , a pé , fora a Paris .
+Lema ser with probability 6.055675010954284e-06
+Lema ir with probability 3.355247573652717e-07
+Most likely lemma: ser
+
+SENTENCE: Manuel fora playstation jogar !
+Lema ser with probability 1.4418273835605437e-07
+Lema ir with probability 1.6776237868263585e-07
+Most likely lemma: ir
+

@@ -1,0 +1,30 @@
+SENTENCE: Nós vimos da rua .
+Lema ver with probability 2.3656784664455547e-06
+Lema vir with probability 4.1485857471188065e-07
+Most likely lemma: ver
+
+SENTENCE: Vimos uma cena na rua .
+Lema ver with probability 0.0004915811607170077
+Lema vir with probability 2.4204824952567853e-06
+Most likely lemma: ver
+
+SENTENCE: Nós vimos as horas mas já estávamos atrasados .
+Lema ver with probability 9.462713865782219e-06
+Lema vir with probability 1.382861915706269e-07
+Most likely lemma: ver
+
+SENTENCE: Saímos como queremos, vimos da noite como pudemos .
+Lema ver with probability 1.719669754620323e-07
+Lema vir with probability 2.110996179096916e-07
+Most likely lemma: vir
+
+SENTENCE: Sabes muito bem o que vimos !
+Lema ver with probability 7.981927246770873e-05
+Lema vir with probability 1.0981890861968612e-06
+Most likely lemma: ver
+
+SENTENCE: Vimos de Lisboa este fim-de-semana ;
+Lema ver with probability 0.00011704313350404946
+Lema vir with probability 2.4204824952567853e-05
+Most likely lemma: ver
+
